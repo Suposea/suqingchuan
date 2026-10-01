@@ -579,6 +579,55 @@ body {
   .project-features { grid-template-columns: 1fr; }
   .project-card { padding: 1.6rem 1.2rem; }
 }
+
+/* ========== 精修增强（2026-10） ========== */
+
+/* 统计数字：渐变材质替代纯色，更有分量 */
+.stat-num {
+  background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-dim) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.01em;
+}
+
+/* 统计项之间的细分隔线 */
+.hero-stats { align-items: center; }
+.stat { position: relative; }
+.stat + .stat::before {
+  content: ''; position: absolute; left: -1.5rem; top: 50%;
+  transform: translateY(-50%); width: 1px; height: 2.4rem;
+  background: linear-gradient(to bottom, transparent, var(--border), transparent);
+}
+
+/* Section 标题：加金色装饰线，视觉节奏更稳 */
+.section-title { position: relative; padding-bottom: 1rem; }
+.section-title::after {
+  content: ''; position: absolute; left: 50%; bottom: 0;
+  transform: translateX(-50%); width: 52px; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+}
+
+/* 卡片 hover：统一微位移，交互反馈更精致 */
+.highlight-card, .skill-category, .cert-card, .edu-card,
+.contact-card, .project-card {
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1),
+              box-shadow 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+}
+.highlight-card:hover, .skill-category:hover, .cert-card:hover,
+.edu-card:hover, .contact-card:hover, .project-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Hero 底部柔光，增强纵深（深色版用更亮的金） */
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 45% 35% at 50% 100%, rgba(212,168,85,0.08) 0%, transparent 70%);
+}
+
+/* 键盘可达性 */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px;
+}
 </style>
 </head>
 <body>
@@ -603,7 +652,6 @@ body {
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span class="dot"></span> Open to Opportunities</div>
     <h1 class="hero-name">苏晴川</h1>
     <p class="hero-title">资金管理 · 市场风险 · 系统治理 — 复合型金融科技专家</p>
     <p class="hero-desc">
@@ -613,7 +661,7 @@ body {
     <div class="hero-actions">
       <a href="#contact" class="btn btn-primary">📬 联系我</a>
       <a href="#experience" class="btn btn-outline">查看经历 →</a>
-      <a href="../assets/resume_sqc.pdf" download class="btn btn-outline">📄 下载简历 PDF</a>
+      <a href="../assets/resume_sqc.pdf" download class="btn btn-outline">📄 完整履历 PDF</a>
     </div>
     <div class="hero-stats">
       <div class="stat">
